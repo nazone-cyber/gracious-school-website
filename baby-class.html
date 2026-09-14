@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Baby Class at Gracious PVT School - A gentle, playful introduction to school for our youngest learners.">
+    <title>Baby Class | Gracious PVT School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky: #43b9e8;
+            --sky-dark: #087aa9;
+            --navy: #12344b;
+            --ink: #1d3542;
+            --muted: #66808d;
+            --pale: #eaf8fd;
+            --line: #d9eaf0;
+            --sun: #ffc857;
+            --white: #ffffff;
+            --shadow: 0 18px 50px rgba(25, 89, 115, .12);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; color: var(--ink); background: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+        .eyebrow { color: var(--sky-dark); font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+        h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; }
+        h1, h2 { font-family: Fraunces, serif; }
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); letter-spacing: -.04em; }
+        h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); letter-spacing: -.03em; }
+        h3 { font-size: 1.18rem; }
+        .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 5px; padding: 14px 20px; background: var(--sky-dark); color: var(--white); font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+        .button:hover { background: var(--navy); transform: translateY(-2px); }
+        .button.alt { background: var(--white); color: var(--navy); }
+        .button.alt:hover { background: var(--sun); }
+        .topbar { background: var(--navy); color: #d9f5ff; font-size: .82rem; }
+        .topbar .container { display: flex; justify-content: space-between; gap: 20px; padding: 8px 0; }
+        .topbar span { display: inline-flex; gap: 7px; align-items: center; }
+        header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.95); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+        nav { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 30px; }
+        .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--navy); }
+        .brand-mark { display: block; width: 43px; height: 43px; border-radius: 50%; object-fit: cover; }
+        .brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 25px; font-size: .9rem; font-weight: 600; }
+        .nav-links a { color: var(--ink); transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--sky-dark); font-weight: 700; }
+        section { padding: 100px 0; }
+        .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
+        .section-head p { max-width: 440px; margin: 0; color: var(--muted); }
+        .hero { overflow: hidden; position: relative; background: var(--pale); }
+        .hero .container { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; min-height: 500px; gap: 54px; padding: 60px 0; }
+        .hero-copy p { max-width: 490px; margin: 24px 0 30px; color: var(--muted); font-size: 1.08rem; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .hero-art { position: relative; min-height: 350px; }
+        .hero-art img { width: 100%; height: 350px; object-fit: cover; border-radius: 15px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .content-grid p { color: var(--muted); margin: 15px 0; }
+        .highlights-list { display: grid; gap: 16px; }
+        .highlight-item { display: flex; gap: 15px; }
+        .highlight-item strong { display: block; color: var(--sky-dark); font-size: 1.3rem; min-width: 30px; }
+        .highlight-item span { color: var(--muted); }
+        .highlight-item b { color: var(--navy); }
+        .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .gallery-photo { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: transform .3s; }
+        .gallery-photo:hover { transform: translateY(-8px); }
+        .gallery-photo img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--sky-dark); font-weight: 600; margin-top: 20px; }
+        .back-link:hover { color: var(--navy); }
+        footer { padding: 27px 0; background: #0d293b; color: #aac5d0; font-size: .82rem; }
+        footer .container { display: flex; justify-content: space-between; gap: 20px; }
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+            .hero .container, .content-grid { grid-template-columns: 1fr; }
+            .hero .container { min-height: 0; padding: 50px 0 60px; }
+            .photo-gallery { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .container { width: min(100% - 28px, 1120px); }
+            .topbar .container, footer .container { flex-direction: column; gap: 3px; }
+            section { padding: 60px 0; }
+            h1 { font-size: 2.5rem; }
+            .photo-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar"><div class="container"><span>✦ Achieving Excellence Together</span><span>📍 Blantyre Fargo, next to Infuse Guest House</span></div></div>
+    <header>
+        <nav class="container">
+            <a class="brand" href="index.html"><img src="logo.jpeg" alt="Gracious PVT School Logo" class="brand-mark"><span>Gracious PVT School<small>Nursery &amp; Primary</small></span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="baby-class.html" class="active">Baby Class</a>
+                <a href="reception.html">Reception</a>
+                <a href="grades-1-3.html">Grades 1-3</a>
+                <a href="grades-4-6.html">Grades 4-6</a>
+                <a href="school-life.html">School Life</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <a class="button" href="index.html#contact">Enquire today <span>→</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-copy">
+                    <span class="eyebrow">Classes at Gracious</span>
+                    <h1>Baby Class</h1>
+                    <p>A gentle, nurturing introduction to school where our youngest learners develop confidence, social bonds and a love of discovery through play and exploration.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="index.html#contact">Enquire about Baby Class <span>→</span></a>
+                    </div>
+                </div>
+                <div class="hero-art">
+                    <img src="gracious pictures/nursery class.jpg" alt="Baby Class at Gracious">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container content-grid">
+                <div>
+                    <h2>What We Do in Baby Class</h2>
+                    <p>Baby Class is all about making school a happy, safe place where little ones can grow. We focus on play-based learning that develops social skills, emotional awareness and early academic foundations. Our warm, caring environment helps each child feel secure and confident as they take their first steps in formal learning.</p>
+                    <p>With a low student-to-teacher ratio, we ensure every child receives the attention and care they need. We celebrate each milestone, from their first friendships to their early attempts at writing and counting.</p>
+                </div>
+                <div>
+                    <h3>Key Learning Areas</h3>
+                    <div class="highlights-list">
+                        <div class="highlight-item">
+                            <strong>🎨</strong>
+                            <span><b>Creative play</b>Art, music, and imaginative activities that spark joy and expression</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🤝</strong>
+                            <span><b>Social skills</b>Learning to share, make friends, and interact with care and kindness</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>📚</strong>
+                            <span><b>Language & literacy</b>Stories, singing and early reading readiness through play</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🔢</strong>
+                            <span><b>Numbers & patterns</b>Counting, sorting and exploring shapes through hands-on activities</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🏃</strong>
+                            <span><b>Physical development</b>Movement, coordination and outdoor play to build strength and confidence</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>❤️</strong>
+                            <span><b>Emotional growth</b>Building resilience, managing feelings and Christian values</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h3 style="margin-top: 60px; margin-bottom: 30px;">Baby Class in Action</h3>
+                <div class="photo-gallery">
+                    <div class="gallery-photo">
+                        <img src="gracious pictures/nursery class.jpg" alt="Baby class learning activity">
+                    </div>
+                    <div class="gallery-photo">
+                        <img src="gracious pictures/nursery class 2.jpg" alt="Baby class playtime">
+                    </div>
+                    <div class="gallery-photo">
+                        <img src="gracious pictures/nursey class 3.jpg" alt="Baby class creative time">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #f8fcfd;">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">A Day in Baby Class</span>
+                        <h2>How We Support Learning</h2>
+                    </div>
+                </div>
+                <div class="content-grid">
+                    <div>
+                        <h3>Our Approach</h3>
+                        <p>Each day is carefully structured to balance structured learning with free play. We use a mix of teacher-led activities and child-initiated exploration. Our teachers observe each child's interests and abilities, tailoring activities to support their unique development.</p>
+                        <p>We believe that young children learn best through play, so our classroom is filled with engaging materials—blocks, art supplies, music, books and toys that inspire curiosity and creativity.</p>
+                    </div>
+                    <div>
+                        <h3>Class Size & Support</h3>
+                        <p>We keep Baby Class groups small, typically 15-18 children per class with one main teacher and a teaching assistant. This ensures each child receives personal attention and care.</p>
+                        <p>We maintain regular communication with parents, sharing updates about your child's progress, achievements and moments of growth. Your partnership in your child's learning is essential to us.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer><div class="container"><span>© 2026 Gracious PVT School. Nursery &amp; Primary.</span><span>Blantyre Fargo · Malawi</span></div></footer>
+</body>
+</html>

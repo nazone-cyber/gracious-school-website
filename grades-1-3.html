@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grades 1-3 at Gracious PVT School - Growing literacy, numeracy and problem-solving skills through active learning.">
+    <title>Grades 1-3 | Gracious PVT School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky: #43b9e8;
+            --sky-dark: #087aa9;
+            --navy: #12344b;
+            --ink: #1d3542;
+            --muted: #66808d;
+            --pale: #eaf8fd;
+            --line: #d9eaf0;
+            --sun: #ffc857;
+            --white: #ffffff;
+            --shadow: 0 18px 50px rgba(25, 89, 115, .12);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; color: var(--ink); background: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+        .eyebrow { color: var(--sky-dark); font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+        h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; }
+        h1, h2 { font-family: Fraunces, serif; }
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); letter-spacing: -.04em; }
+        h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); letter-spacing: -.03em; }
+        h3 { font-size: 1.18rem; }
+        .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 5px; padding: 14px 20px; background: var(--sky-dark); color: var(--white); font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+        .button:hover { background: var(--navy); transform: translateY(-2px); }
+        .button.alt { background: var(--white); color: var(--navy); }
+        .button.alt:hover { background: var(--sun); }
+        .topbar { background: var(--navy); color: #d9f5ff; font-size: .82rem; }
+        .topbar .container { display: flex; justify-content: space-between; gap: 20px; padding: 8px 0; }
+        .topbar span { display: inline-flex; gap: 7px; align-items: center; }
+        header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.95); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+        nav { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 30px; }
+        .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--navy); }
+        .brand-mark { display: block; width: 43px; height: 43px; border-radius: 50%; object-fit: cover; }
+        .brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 25px; font-size: .9rem; font-weight: 600; }
+        .nav-links a { color: var(--ink); transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--sky-dark); font-weight: 700; }
+        section { padding: 100px 0; }
+        .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
+        .section-head p { max-width: 440px; margin: 0; color: var(--muted); }
+        .hero { overflow: hidden; position: relative; background: var(--pale); }
+        .hero .container { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; min-height: 500px; gap: 54px; padding: 60px 0; }
+        .hero-copy p { max-width: 490px; margin: 24px 0 30px; color: var(--muted); font-size: 1.08rem; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .hero-art { position: relative; min-height: 350px; }
+        .hero-art img { width: 100%; height: 350px; object-fit: cover; border-radius: 15px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .content-grid p { color: var(--muted); margin: 15px 0; }
+        .highlights-list { display: grid; gap: 16px; }
+        .highlight-item { display: flex; gap: 15px; }
+        .highlight-item strong { display: block; color: var(--sky-dark); font-size: 1.3rem; min-width: 30px; }
+        .highlight-item span { color: var(--muted); }
+        .highlight-item b { color: var(--navy); }
+        .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .gallery-photo { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: transform .3s; }
+        .gallery-photo:hover { transform: translateY(-8px); }
+        .gallery-photo img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        footer { padding: 27px 0; background: #0d293b; color: #aac5d0; font-size: .82rem; }
+        footer .container { display: flex; justify-content: space-between; gap: 20px; }
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+            .hero .container, .content-grid { grid-template-columns: 1fr; }
+            .hero .container { min-height: 0; padding: 50px 0 60px; }
+            .photo-gallery { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .container { width: min(100% - 28px, 1120px); }
+            .topbar .container, footer .container { flex-direction: column; gap: 3px; }
+            section { padding: 60px 0; }
+            h1 { font-size: 2.5rem; }
+            .photo-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar"><div class="container"><span>✦ Achieving Excellence Together</span><span>📍 Blantyre Fargo, next to Infuse Guest House</span></div></div>
+    <header>
+        <nav class="container">
+            <a class="brand" href="index.html"><img src="logo.jpeg" alt="Gracious PVT School Logo" class="brand-mark"><span>Gracious PVT School<small>Nursery &amp; Primary</small></span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="baby-class.html">Baby Class</a>
+                <a href="reception.html">Reception</a>
+                <a href="grades-1-3.html" class="active">Grades 1-3</a>
+                <a href="grades-4-6.html">Grades 4-6</a>
+                <a href="school-life.html">School Life</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <a class="button" href="index.html#contact">Enquire today <span>→</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-copy">
+                    <span class="eyebrow">Classes at Gracious</span>
+                    <h1>Grades 1–3</h1>
+                    <p>Growing core literacy, numeracy and problem-solving skills through active, engaging learning. Our junior primary classes foster curiosity, independence and a love of learning.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="index.html#contact">Enquire about Grades 1-3 <span>→</span></a>
+                    </div>
+                </div>
+                <div class="hero-art">
+                    <img src="gracious pictures/nursey class 3.jpg" alt="Grades 1-3 at Gracious">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container content-grid">
+                <div>
+                    <h2>Active Learning for Young Minds</h2>
+                    <p>In Grades 1-3, children become more independent learners while still needing a warm, supportive environment. We transition from primarily play-based learning to a more structured curriculum, while maintaining hands-on, engaging activities that make learning enjoyable.</p>
+                    <p>Our teachers use a mix of whole-class instruction, small group learning and individual work. Children learn foundational literacy and numeracy skills, develop research abilities, and explore science, social studies and the arts. Throughout, we emphasize critical thinking, creativity and problem-solving.</p>
+                </div>
+                <div>
+                    <h3>Curriculum Focus</h3>
+                    <div class="highlights-list">
+                        <div class="highlight-item">
+                            <strong>📚</strong>
+                            <span><b>English & literacy</b>Reading comprehension, writing, grammar and communication skills</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🔢</strong>
+                            <span><b>Mathematics</b>Number operations, fractions, measurement, geometry and problem-solving</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🔬</strong>
+                            <span><b>Science</b>Hands-on exploration of living things, physical science and the natural world</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🌍</strong>
+                            <span><b>Social studies</b>Learning about communities, cultures, history and geography</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>🎨</strong>
+                            <span><b>Arts & creativity</b>Art, music and performance as ways to express and explore ideas</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>💪</strong>
+                            <span><b>Physical education</b>Movement, sports and healthy living habits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h3 style="margin-top: 60px; margin-bottom: 30px;">Grades 1-3 Learning in Action</h3>
+                <div class="photo-gallery">
+                    <div class="gallery-photo">
+                        <img src="gracious pictures/nursery class.jpg" alt="Grade 1-3 classroom activities">
+                    </div>
+                    <div class="gallery-photo">
+                        <img src="gracious pictures/nursery class 2.jpg" alt="Grade 1-3 group learning">
+                    </div>
+                    <div class="gallery-photo">
+                        <img src="gracious pictures/nursey class 3.jpg" alt="Grade 1-3 creative learning">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #f8fcfd;">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Growth & Development</span>
+                        <h2>Supporting Each Learner</h2>
+                    </div>
+                </div>
+                <div class="content-grid">
+                    <div>
+                        <h3>Personalized Learning</h3>
+                        <p>Every child learns at their own pace and in their own way. Our teachers use observation and assessment to understand each student's strengths, interests and areas for growth. We provide differentiated instruction—offering challenges for advanced learners and extra support for those who need it.</p>
+                        <p>We celebrate individual achievements and encourage children to set goals, take risks and learn from mistakes. Growth mindset is woven into everything we do.</p>
+                    </div>
+                    <div>
+                        <h3>Building Confidence & Independence</h3>
+                        <p>By Grade 3, we want children to be independent learners who can manage their time, follow instructions and take responsibility for their learning. We build these skills gradually through classroom routines, leadership opportunities and age-appropriate responsibilities.</p>
+                        <p>We also foster social-emotional learning, helping children develop resilience, empathy, teamwork and healthy communication skills that will serve them throughout their lives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer><div class="container"><span>© 2026 Gracious PVT School. Nursery &amp; Primary.</span><span>Blantyre Fargo · Malawi</span></div></footer>
+</body>
+</html>

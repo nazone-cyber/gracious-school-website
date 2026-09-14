@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="School Life and Events at Gracious PVT School - Celebrations, culture, trips and special moments in our community.">
+    <title>School Life & Events | Gracious PVT School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky: #43b9e8;
+            --sky-dark: #087aa9;
+            --navy: #12344b;
+            --ink: #1d3542;
+            --muted: #66808d;
+            --pale: #eaf8fd;
+            --line: #d9eaf0;
+            --sun: #ffc857;
+            --white: #ffffff;
+            --shadow: 0 18px 50px rgba(25, 89, 115, .12);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; color: var(--ink); background: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+        .eyebrow { color: var(--sky-dark); font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+        h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; }
+        h1, h2 { font-family: Fraunces, serif; }
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); letter-spacing: -.04em; }
+        h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); letter-spacing: -.03em; }
+        h3 { font-size: 1.18rem; }
+        .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 5px; padding: 14px 20px; background: var(--sky-dark); color: var(--white); font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+        .button:hover { background: var(--navy); transform: translateY(-2px); }
+        .button.alt { background: var(--white); color: var(--navy); }
+        .button.alt:hover { background: var(--sun); }
+        .topbar { background: var(--navy); color: #d9f5ff; font-size: .82rem; }
+        .topbar .container { display: flex; justify-content: space-between; gap: 20px; padding: 8px 0; }
+        .topbar span { display: inline-flex; gap: 7px; align-items: center; }
+        header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.95); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+        nav { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 30px; }
+        .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--navy); }
+        .brand-mark { display: block; width: 43px; height: 43px; border-radius: 50%; object-fit: cover; }
+        .brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 25px; font-size: .9rem; font-weight: 600; }
+        .nav-links a { color: var(--ink); transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--sky-dark); font-weight: 700; }
+        .hero { overflow: hidden; position: relative; background: var(--pale); }
+        .hero .container { display: grid; grid-template-columns: 1fr; align-items: center; min-height: 400px; gap: 54px; padding: 60px 0; text-align: center; }
+        .hero-copy p { margin: 24px 0 30px; color: var(--muted); font-size: 1.08rem; }
+        section { padding: 80px 0; }
+        .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
+        .section-head p { max-width: 440px; margin: 0; color: var(--muted); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .gallery-item { background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: transform .3s; }
+        .gallery-item:hover { transform: translateY(-8px); }
+        .gallery-title { padding: 18px; background: var(--pale); font-weight: 600; color: var(--navy); font-size: 1.1rem; }
+        .gallery-description { padding: 16px 18px; color: var(--muted); font-size: .95rem; line-height: 1.6; min-height: 70px; display: flex; align-items: center; }
+        .slideshow-container { position: relative; width: 100%; background: var(--ink); overflow: hidden; }
+        .slide { display: none; width: 100%; }
+        .slide img { width: 100%; height: 350px; object-fit: cover; display: block; }
+        .slide.active { display: block; }
+        .slide-nav { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; }
+        .slide-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.5); cursor: pointer; transition: background .3s; }
+        .slide-dot:hover { background: rgba(255,255,255,.8); }
+        .slide-dot.active { background: var(--white); }
+        .event-description { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-top: 50px; }
+        .event-description p { color: var(--muted); margin: 15px 0; }
+        .highlight-box { background: var(--pale); padding: 24px; border-radius: 8px; margin-top: 20px; }
+        .highlight-box h4 { color: var(--sky-dark); margin: 0 0 10px 0; }
+        .highlight-box p { margin: 8px 0; }
+        footer { padding: 27px 0; background: #0d293b; color: #aac5d0; font-size: .82rem; }
+        footer .container { display: flex; justify-content: space-between; gap: 20px; }
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .event-description { grid-template-columns: 1fr; }
+            section { padding: 60px 0; }
+        }
+        @media (max-width: 480px) {
+            .container { width: min(100% - 28px, 1120px); }
+            .topbar .container, footer .container { flex-direction: column; gap: 3px; }
+            h1 { font-size: 2.5rem; }
+            .slide img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar"><div class="container"><span>✦ Achieving Excellence Together</span><span>📍 Blantyre Fargo, next to Infuse Guest House</span></div></div>
+    <header>
+        <nav class="container">
+            <a class="brand" href="index.html"><img src="logo.jpeg" alt="Gracious PVT School Logo" class="brand-mark"><span>Gracious PVT School<small>Nursery &amp; Primary</small></span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="baby-class.html">Baby Class</a>
+                <a href="reception.html">Reception</a>
+                <a href="grades-1-3.html">Grades 1-3</a>
+                <a href="grades-4-6.html">Grades 4-6</a>
+                <a href="school-life.html" class="active">School Life</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <a class="button" href="index.html#contact">Enquire today <span>→</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-copy">
+                    <span class="eyebrow">Beyond the Classroom</span>
+                    <h1>School Life & Events</h1>
+                    <p>At Gracious, learning extends beyond textbooks. We celebrate community, explore our culture, embark on educational adventures and mark important milestones together. These moments shape who our students become.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">School Celebrations</span>
+                        <h2>Memorable Moments Together</h2>
+                    </div>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Nursery Class Highlights -->
+                    <div class="gallery-item">
+                        <div class="gallery-title">Nursery Class</div>
+                        <div class="slideshow-container" id="nursery-slideshow">
+                            <div class="slide active"><img src="gracious pictures/nursery class.jpg" alt="Nursery class 1"></div>
+                            <div class="slide"><img src="gracious pictures/nursery class 2.jpg" alt="Nursery class 2"></div>
+                            <div class="slide"><img src="gracious pictures/nursey class 3.jpg" alt="Nursery class 3"></div>
+                            <div class="slide-nav">
+                                <span class="slide-dot active" onclick="currentSlide(0, 'nursery-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(1, 'nursery-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(2, 'nursery-slideshow')"></span>
+                            </div>
+                        </div>
+                        <div class="gallery-description">Our youngest learners in the nursery class experience joy, play-based learning and precious moments of discovery together.</div>
+                    </div>
+
+                    <!-- Culture Day -->
+                    <div class="gallery-item">
+                        <div class="gallery-title">Malawi Culture Day</div>
+                        <div class="slideshow-container" id="culture-slideshow">
+                            <div class="slide active"><img src="gracious pictures/culture day picture.jpg" alt="Culture day 1"></div>
+                            <div class="slide"><img src="gracious pictures/culutre day pic 2.jpg" alt="Culture day 2"></div>
+                            <div class="slide-nav">
+                                <span class="slide-dot active" onclick="currentSlide(0, 'culture-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(1, 'culture-slideshow')"></span>
+                            </div>
+                        </div>
+                        <div class="gallery-description">Every year, our students celebrate Malawi Culture Day, showcasing the rich diversity, traditions and heritage of our nation. Students wear traditional attire and learn about different cultures across Malawi.</div>
+                    </div>
+
+                    <!-- Museum Trip -->
+                    <div class="gallery-item">
+                        <div class="gallery-title">Museum Educational Trip</div>
+                        <div class="slideshow-container" id="museum-slideshow">
+                            <div class="slide active"><img src="gracious pictures/museum pic 1.jpg" alt="Museum trip 1"></div>
+                            <div class="slide"><img src="gracious pictures/museum pic 2.jpg" alt="Museum trip 2"></div>
+                            <div class="slide"><img src="gracious pictures/museum pic 3.jpg" alt="Museum trip 3"></div>
+                            <div class="slide-nav">
+                                <span class="slide-dot active" onclick="currentSlide(0, 'museum-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(1, 'museum-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(2, 'museum-slideshow')"></span>
+                            </div>
+                        </div>
+                        <div class="gallery-description">Learning beyond the classroom! Our students enjoy educational trips to the museum to discover history, science and culture while experiencing hands-on exploration and discovery.</div>
+                    </div>
+
+                    <!-- Graduation -->
+                    <div class="gallery-item">
+                        <div class="gallery-title">Annual Graduation Celebration</div>
+                        <div class="slideshow-container" id="graduation-slideshow">
+                            <div class="slide active"><img src="gracious pictures/graduation meal.jpg" alt="Graduation meal"></div>
+                            <div class="slide"><img src="gracious pictures/graduation performance.jpg" alt="Graduation performance"></div>
+                            <div class="slide"><img src="gracious pictures/gradutaion photoshoot.jpg" alt="Graduation photoshoot"></div>
+                            <div class="slide"><img src="gracious pictures/throwing caps graduation.jpg" alt="Throwing caps graduation"></div>
+                            <div class="slide-nav">
+                                <span class="slide-dot active" onclick="currentSlide(0, 'graduation-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(1, 'graduation-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(2, 'graduation-slideshow')"></span>
+                                <span class="slide-dot" onclick="currentSlide(3, 'graduation-slideshow')"></span>
+                            </div>
+                        </div>
+                        <div class="gallery-description">Every year, we celebrate our graduating Grade 6 students with a memorable graduation ceremony featuring performances, a special meal, photoshoots and the traditional cap toss celebration.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #f8fcfd;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 50px;">Celebrating Our Community</h2>
+                
+                <div class="event-description">
+                    <div>
+                        <h3>Malawi Culture Day: A Living Classroom</h3>
+                        <p>Each year, Malawi Culture Day is a highlight of our school calendar. It's a day when our students celebrate the rich diversity, traditions and heritage of Malawi. Students come dressed in traditional attire from different regions and cultures across the country—from Tumbuka to Chichewa, Yao to Ngoni traditions.</p>
+                        <p>Through this celebration, our students learn about their own cultural roots and develop respect and appreciation for the diverse cultures that make up our nation. It's more than a celebration—it's an educational experience that connects learning to real Malawian heritage.</p>
+                        <div class="highlight-box">
+                            <h4>What Students Learn</h4>
+                            <p>Understanding and respecting different cultures, connecting with Malawian heritage, celebrating diversity, and developing cultural pride and identity.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Educational Museum Visits</h3>
+                        <p>We believe that education happens everywhere—not just in the classroom. Our students regularly take educational trips to the museum, where they can see historical artifacts, learn about Malawian history and culture, and engage with science exhibitions.</p>
+                        <p>These trips bring learning to life. Students interact with exhibits, ask questions and make connections between what they study in class and the wider world around them. It's hands-on, engaging education that sparks curiosity and deeper understanding.</p>
+                        <div class="highlight-box">
+                            <h4>Why Excursions Matter</h4>
+                            <p>They provide real-world learning experiences, develop independence and teamwork, spark curiosity about the world, and create lasting memories that strengthen school community bonds.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-description" style="margin-top: 80px;">
+                    <div>
+                        <h3>Annual Graduation: Celebrating Achievement</h3>
+                        <p>Every year, we celebrate our graduating Grade 6 students with a memorable graduation ceremony. It's a joyful occasion filled with performances by students, a special meal, professional photoshoots and the traditional mortarboard cap toss.</p>
+                        <p>The graduation ceremony honors the growth and achievements of our students as they complete their primary journey with Gracious. For many families, this is an emotional and joyful milestone—watching their children step forward into their secondary school years with confidence and pride.</p>
+                        <div class="highlight-box">
+                            <h4>Graduation Highlights</h4>
+                            <p>Student performances, special dinner celebration, professional photography, cap toss tradition, certificates of achievement, and recognition of each student's unique talents and growth.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Joy in Every Classroom</h3>
+                        <p>Beyond these special events, joy and community are woven into every day at Gracious. From spontaneous sing-alongs to birthday celebrations, from group games to collaborative projects—our school is filled with moments of laughter, learning and connection.</p>
+                        <p>We believe that children learn best in an environment where they feel safe, happy and valued. Our teachers create space for play, creativity and genuine relationships. Every child experiences moments of success, friendship and belonging.</p>
+                        <div class="highlight-box">
+                            <h4>Our Culture</h4>
+                            <p>Kindness, celebration, discovery, teamwork, mutual respect and a sense of belonging. These values define the Gracious community and shape how our students grow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer><div class="container"><span>© 2026 Gracious PVT School. Nursery &amp; Primary.</span><span>Blantyre Fargo · Malawi</span></div></footer>
+
+    <script>
+        let slideshowIntervals = {};
+
+        function currentSlide(index, slideshowId) {
+            showSlide(index, slideshowId);
+            resetSlideshow(slideshowId);
+        }
+
+        function showSlide(index, slideshowId) {
+            const slideshow = document.getElementById(slideshowId);
+            const slides = slideshow.querySelectorAll('.slide');
+            const dots = slideshow.querySelectorAll('.slide-dot');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide(slideshowId) {
+            const slideshow = document.getElementById(slideshowId);
+            const slides = slideshow.querySelectorAll('.slide');
+            let currentIndex = 0;
+            
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('active')) {
+                    currentIndex = index;
+                }
+            });
+            
+            const nextIndex = (currentIndex + 1) % slides.length;
+            showSlide(nextIndex, slideshowId);
+        }
+
+        function resetSlideshow(slideshowId) {
+            if (slideshowIntervals[slideshowId]) {
+                clearInterval(slideshowIntervals[slideshowId]);
+            }
+            slideshowIntervals[slideshowId] = setInterval(() => {
+                nextSlide(slideshowId);
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const slideshows = ['nursery-slideshow', 'culture-slideshow', 'museum-slideshow', 'graduation-slideshow'];
+            slideshows.forEach(slideshowId => {
+                resetSlideshow(slideshowId);
+            });
+        });
+    </script>
+</body>
+</html>

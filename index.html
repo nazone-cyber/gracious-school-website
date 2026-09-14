@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gracious PVT School is a nurturing primary and nursery school in Blantyre Fargo, Malawi.">
+    <title>Gracious PVT School | Blantyre, Malawi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky: #43b9e8;
+            --sky-dark: #087aa9;
+            --navy: #12344b;
+            --ink: #1d3542;
+            --muted: #66808d;
+            --pale: #eaf8fd;
+            --line: #d9eaf0;
+            --sun: #ffc857;
+            --white: #ffffff;
+            --shadow: 0 18px 50px rgba(25, 89, 115, .12);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; color: var(--ink); background: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+        .eyebrow { color: var(--sky-dark); font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+        h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; }
+        h1, h2 { font-family: Fraunces, serif; }
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); letter-spacing: -.04em; }
+        h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); letter-spacing: -.03em; }
+        h3 { font-size: 1.18rem; }
+        .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 5px; padding: 14px 20px; background: var(--sky-dark); color: var(--white); font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+        .button:hover { background: var(--navy); transform: translateY(-2px); }
+        .button.alt { background: var(--white); color: var(--navy); }
+        .button.alt:hover { background: var(--sun); }
+        .topbar { background: var(--navy); color: #d9f5ff; font-size: .82rem; }
+        .topbar .container { display: flex; justify-content: space-between; gap: 20px; padding: 8px 0; }
+        .topbar span { display: inline-flex; gap: 7px; align-items: center; }
+        header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.95); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+        nav { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 30px; }
+        .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--navy); }
+        .brand-mark { display: block; width: 43px; height: 43px; border-radius: 50%; object-fit: cover; }
+        .brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 25px; font-size: .9rem; font-weight: 600; }
+        .nav-links a { color: var(--ink); }
+        .nav-links a:hover { color: var(--sky-dark); }
+        .hero { overflow: hidden; position: relative; background: var(--pale); }
+        .hero .container { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; min-height: 635px; gap: 54px; padding: 70px 0; }
+        .hero-copy p { max-width: 490px; margin: 24px 0 30px; color: var(--muted); font-size: 1.08rem; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .hero-art { position: relative; min-height: 440px; }
+        .hero-art img { width: 84%; height: 440px; object-fit: cover; border-radius: 45% 5px 5px 5px; margin-left: auto; }
+        .hero-badge { position: absolute; bottom: 25px; left: 0; max-width: 215px; padding: 19px; border-radius: 5px; background: var(--white); box-shadow: var(--shadow); }
+        .hero-badge strong { display: block; color: var(--navy); font-family: Fraunces, serif; font-size: 1.6rem; }
+        section { padding: 100px 0; }
+        .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
+        .section-head p { max-width: 440px; margin: 0; color: var(--muted); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 75px; align-items: center; }
+        .about-grid p { color: var(--muted); }
+        .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 26px 0 30px; padding: 0; list-style: none; font-weight: 600; font-size: .9rem; }
+        .check-list li::before { content: "✓"; display: inline-grid; place-items: center; width: 21px; height: 21px; margin-right: 8px; border-radius: 50%; background: var(--pale); color: var(--sky-dark); }
+        .about-image { position: relative; }
+        .about-image img { width: 100%; height: 390px; object-fit: cover; border-radius: 5px 70px 5px 5px; }
+        .quote-note { position: absolute; right: -24px; bottom: -22px; width: 195px; padding: 20px; background: var(--sun); color: var(--navy); font-weight: 700; }
+        .programs { background: #f8fcfd; }
+        .program-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .program-grid a { text-decoration: none; }
+        .program { min-height: 220px; padding: 25px 21px; border: 1px solid var(--line); background: var(--white); transition: transform .2s, box-shadow .2s; }
+        .program:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .program-number { color: var(--sky); font-family: Fraunces, serif; font-size: 2rem; }
+        .program p { color: var(--muted); font-size: .88rem; }
+        .feature-band { background: var(--sky); color: var(--white); }
+        .feature-band h2, .feature-band h3 { color: var(--white); }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+        .feature { border-left: 1px solid rgba(255,255,255,.45); padding-left: 24px; }
+        .feature-icon { margin-bottom: 20px; font-size: 2rem; }
+        .feature p { margin-bottom: 0; color: #e8faff; font-size: .9rem; }
+        .life-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 55px; align-items: center; }
+        .life-list { display: grid; gap: 12px; }
+        .life-item { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 15px; padding: 15px; border-bottom: 1px solid var(--line); }
+        .life-item b { display: block; color: var(--navy); }
+        .life-item span { color: var(--muted); font-size: .88rem; }
+        .life-item strong { display: grid; place-items: center; width: 42px; height: 42px; background: var(--pale); color: var(--sky-dark); font-size: 1.2rem; }
+        .life-photo { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+        .life-photo img { width: 100%; height: 210px; object-fit: cover; border-radius: 5px; }
+        .life-photo img:first-child { height: 310px; margin-top: 35px; }
+        .gallery-section { margin-top: 50px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .gallery-item { background: var(--white); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; box-shadow: var(--shadow); }
+        .gallery-title { padding: 16px; background: var(--pale); font-weight: 600; color: var(--navy); }
+        .slideshow-container { position: relative; width: 100%; background: var(--ink); overflow: hidden; }
+        .slide { display: none; width: 100%; }
+        .slide img { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .slide.active { display: block; }
+        .slide-nav { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; }
+        .slide-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.5); cursor: pointer; transition: background .3s; }
+        .slide-dot.active { background: var(--white); }
+        @media (max-width: 800px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+        .admissions { background: var(--navy); color: var(--white); }
+        .admissions h2 { color: var(--white); }
+        .admissions .container { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+        .admissions p { max-width: 530px; color: #bed5df; }
+        .contact { background: var(--pale); }
+        .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 60px; }
+        .contact-details { display: grid; gap: 18px; margin-top: 25px; }
+        .contact-details div { display: flex; gap: 14px; align-items: start; }
+        .contact-details strong { display: block; color: var(--navy); }
+        .contact-details span { color: var(--muted); font-size: .9rem; }
+        .contact-form { display: grid; gap: 13px; padding: 28px; background: var(--white); box-shadow: var(--shadow); }
+        .forms-section { background: #f8fcfd; }
+        .form-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+        .form-tab { border: 1px solid var(--line); border-radius: 3px; padding: 10px 14px; background: var(--white); color: var(--navy); font: inherit; font-size: .86rem; font-weight: 700; cursor: pointer; }
+        .form-tab[aria-selected="true"], .form-tab:hover { border-color: var(--sky-dark); background: var(--sky-dark); color: var(--white); }
+        .form-panel { display: none; max-width: 760px; padding: 28px; background: var(--white); box-shadow: var(--shadow); }
+        .form-panel.active { display: grid; gap: 13px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+        select { width: 100%; margin-top: 5px; padding: 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--white); font: inherit; }
+        .form-status { min-height: 24px; margin: 0; color: var(--sky-dark); font-size: .9rem; font-weight: 600; }
+        .form-status.error { color: #b42318; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        .consent { display: flex; gap: 9px; align-items: start; color: var(--muted); font-size: .78rem; font-weight: 400; }
+        .consent input { width: auto; margin: 4px 0 0; }
+        .newsletter { padding: 52px 0; background: var(--sun); }
+        .newsletter .container { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+        .newsletter h2 { font-size: 2rem; }
+        .newsletter-form { display: flex; gap: 8px; min-width: min(100%, 420px); }
+        .newsletter-form input { margin: 0; background: var(--white); }
+        label { color: var(--navy); font-size: .82rem; font-weight: 700; }
+        input, textarea { width: 100%; margin-top: 5px; padding: 12px; border: 1px solid var(--line); border-radius: 3px; font: inherit; }
+        textarea { min-height: 105px; resize: vertical; }
+        footer { padding: 27px 0; background: #0d293b; color: #aac5d0; font-size: .82rem; }
+        footer .container { display: flex; justify-content: space-between; gap: 20px; }
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+            .hero .container, .about-grid, .life-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero .container { min-height: 0; padding: 65px 0 85px; }
+            .hero-art { min-height: 350px; }
+            .hero-art img { height: 350px; }
+            .program-grid { grid-template-columns: 1fr 1fr; }
+            .feature-grid { grid-template-columns: 1fr; gap: 25px; }
+            .admissions .container, .section-head, .newsletter .container { align-items: start; flex-direction: column; }
+            .newsletter-form { width: 100%; }
+            .quote-note { right: 0; }
+        }
+        @media (max-width: 480px) {
+            .container { width: min(100% - 28px, 1120px); }
+            .topbar .container, footer .container { flex-direction: column; gap: 3px; }
+            section { padding: 70px 0; }
+            .program-grid, .check-list, .form-row { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            h1 { font-size: 3.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar"><div class="container"><span>✦ Achieving Excellence Together</span><span>📍 Blantyre Fargo, next to Infuse Guest House</span></div></div>
+    <header>
+        <nav class="container">
+            <a class="brand" href="#home"><img src="logo.jpeg" alt="Gracious PVT School Logo" class="brand-mark"><span>Gracious PVT School<small>Nursery &amp; Primary</small></span></a>
+            <div class="nav-links"><a href="#about">Our school</a><a href="#programs">Classes</a><a href="#life">School life</a><a href="#admissions">Admissions</a><a href="#forms">Forms</a><a href="#contact">Contact</a></div>
+            <a class="button" href="#contact">Enquire today <span>→</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-copy"><span class="eyebrow">Welcome to Gracious</span><h1>Bright minds.<br>Kind hearts.</h1><p>A warm, joyful start to every child's learning journey. Gracious PVT School helps young learners build confidence, curiosity and character in Blantyre.</p><div class="hero-actions"><a class="button" href="#admissions">Discover our school <span>↗</span></a><a class="button alt" href="#programs">View classes</a></div></div>
+                <div class="hero-art"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=85" alt="Children learning together in a bright classroom"><div class="hero-badge"><strong>Growing together</strong><span>Every day is a new opportunity to discover.</span></div></div>
+            </div>
+        </section>
+
+        <section id="about"><div class="container about-grid"><div><span class="eyebrow">Who we are</span><h2>A happy place to begin.</h2><p>At Gracious PVT School, we believe children learn best when they feel safe, seen and inspired. As a Christian-centered school, we nurture young learners with strong values, character and faith at the heart of everything we do. Our caring teachers create a supportive environment where every child can explore their talents and take confident steps forward.</p><ul class="check-list"><li>Christian values</li><li>Child-centred learning</li><li>Dedicated teachers</li><li>Safe, caring environment</li></ul><a class="button" href="#contact">Meet Gracious</a></div><div class="about-image"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=85" alt="Teacher helping pupils in class"><div class="quote-note">“Little steps make big futures.”</div></div></div></section>
+
+        <section class="programs" id="programs"><div class="container"><div class="section-head"><div><span class="eyebrow">Our classes</span><h2>Learning for every stage.</h2></div><p>Our classes are designed around each age group, giving learners the right balance of play, discovery and academic growth.</p></div><div class="program-grid"><a href="baby-class.html"><article class="program"><span class="program-number">01</span><h3>Baby Class</h3><p>A gentle, playful introduction to school, relationships and early discovery.</p></article></a><a href="reception.html"><article class="program"><span class="program-number">02</span><h3>Reception</h3><p>Building confidence, communication and the foundations for primary learning.</p></article></a><a href="grades-1-3.html"><article class="program"><span class="program-number">03</span><h3>Grades 1–3</h3><p>Growing core literacy, numeracy and problem-solving skills through active learning.</p></article></a><a href="grades-4-6.html"><article class="program"><span class="program-number">04</span><h3>Grades 4–6</h3><p>Deepening knowledge, independence and leadership ready for the next chapter.</p></article></a></div></div></section>
+
+        <section class="feature-band"><div class="container feature-grid"><div class="feature"><div class="feature-icon">✦</div><h3>Character first</h3><p>We nurture respectful, responsible learners grounded in Christian values who care about their community.</p></div><div class="feature"><div class="feature-icon">⌁</div><h3>Faith and learning</h3><p>We integrate Christian principles with academic excellence, helping children grow spiritually and intellectually.</p></div><div class="feature"><div class="feature-icon">♡</div><h3>Known and supported</h3><p>Strong relationships with families help every child feel they belong and thrive in a caring Christian community.</p></div></div></section>
+
+        <section id="life"><div class="container life-grid"><div><span class="eyebrow">Beyond the classroom</span><h2>Room to play, wonder and grow.</h2><p>School is more than lessons. Our learners have space to make friends, express themselves and discover what makes them unique.</p><div class="life-list"><div class="life-item"><strong>✎</strong><span><b>Creative expression</b>Art, music, stories and hands-on projects.</span></div><div class="life-item"><strong>⚽</strong><span><b>Active play</b>Movement, teamwork and healthy confidence.</span></div><div class="life-item"><strong>☼</strong><span><b>Community spirit</b>Kindness, responsibility and shared celebrations.</span></div></div></div><div class="life-photo"><img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?auto=format&fit=crop&w=600&q=85" alt="Children enjoying an outdoor activity"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=600&q=85" alt="Young child smiling at school"></div></div><div class="container gallery-section"><div class="gallery-grid"><div class="gallery-item"><div class="gallery-title">Nursery Class</div><div class="slideshow-container" id="nursery-slideshow"><div class="slide active"><img src="gracious pictures/nursery class.jpg" alt="Nursery class 1"></div><div class="slide"><img src="gracious pictures/nursery class 2.jpg" alt="Nursery class 2"></div><div class="slide"><img src="gracious pictures/nursey class 3.jpg" alt="Nursery class 3"></div><div class="slide-nav"><span class="slide-dot active" onclick="currentSlide(0, 'nursery-slideshow')"></span><span class="slide-dot" onclick="currentSlide(1, 'nursery-slideshow')"></span><span class="slide-dot" onclick="currentSlide(2, 'nursery-slideshow')"></span></div></div></div><div class="gallery-item"><div class="gallery-title">Culture Day</div><div class="slideshow-container" id="culture-slideshow"><div class="slide active"><img src="gracious pictures/culture day picture.jpg" alt="Culture day 1"></div><div class="slide"><img src="gracious pictures/culutre day pic 2.jpg" alt="Culture day 2"></div><div class="slide-nav"><span class="slide-dot active" onclick="currentSlide(0, 'culture-slideshow')"></span><span class="slide-dot" onclick="currentSlide(1, 'culture-slideshow')"></span></div></div></div><div class="gallery-item"><div class="gallery-title">Museum Trip</div><div class="slideshow-container" id="museum-slideshow"><div class="slide active"><img src="gracious pictures/museum pic 1.jpg" alt="Museum trip 1"></div><div class="slide"><img src="gracious pictures/museum pic 2.jpg" alt="Museum trip 2"></div><div class="slide"><img src="gracious pictures/museum pic 3.jpg" alt="Museum trip 3"></div><div class="slide-nav"><span class="slide-dot active" onclick="currentSlide(0, 'museum-slideshow')"></span><span class="slide-dot" onclick="currentSlide(1, 'museum-slideshow')"></span><span class="slide-dot" onclick="currentSlide(2, 'museum-slideshow')"></span></div></div></div><div class="gallery-item"><div class="gallery-title">Graduation</div><div class="slideshow-container" id="graduation-slideshow"><div class="slide active"><img src="gracious pictures/graduation meal.jpg" alt="Graduation meal"></div><div class="slide"><img src="gracious pictures/graduation performance.jpg" alt="Graduation performance"></div><div class="slide"><img src="gracious pictures/gradutaion photoshoot.jpg" alt="Graduation photoshoot"></div><div class="slide"><img src="gracious pictures/throwing caps graduation.jpg" alt="Throwing caps graduation"></div><div class="slide-nav"><span class="slide-dot active" onclick="currentSlide(0, 'graduation-slideshow')"></span><span class="slide-dot" onclick="currentSlide(1, 'graduation-slideshow')"></span><span class="slide-dot" onclick="currentSlide(2, 'graduation-slideshow')"></span><span class="slide-dot" onclick="currentSlide(3, 'graduation-slideshow')"></span></div></div></div></div></div></section>
+
+        <section class="admissions" id="admissions"><div class="container"><div><span class="eyebrow" style="color:var(--sun)">Admissions open</span><h2>Start your child's<br>Gracious journey.</h2><p>Come and see our school, meet our team and find the class that is right for your child. We welcome families to get in touch throughout the year.</p></div><a class="button alt" href="#contact">Ask about a place <span>→</span></a></div></section>
+
+        <section class="forms-section" id="forms"><div class="container"><div class="section-head"><div><span class="eyebrow">Family forms</span><h2>Take the next step.</h2></div><p>Choose a form below. Your details are sent securely to the school office.</p></div><div class="form-tabs" role="tablist" aria-label="School forms"><button class="form-tab" type="button" role="tab" aria-selected="true" aria-controls="application-panel" data-panel="application-panel">Student application</button><button class="form-tab" type="button" role="tab" aria-selected="false" aria-controls="enquiry-panel" data-panel="enquiry-panel">General enquiry</button><button class="form-tab" type="button" role="tab" aria-selected="false" aria-controls="contact-panel" data-panel="contact-panel">Contact office</button></div>
+            <form class="form-panel active" id="application-panel" data-form="application" novalidate><div class="form-row"><label for="student-name">Student's full name<input id="student-name" name="studentName" type="text" autocomplete="name" required></label><label for="student-dob">Date of birth<input id="student-dob" name="dateOfBirth" type="date" required></label></div><div class="form-row"><label for="class-choice">Class applying for<select id="class-choice" name="classChoice" required><option value="">Choose a class</option><option>Baby Class</option><option>Reception</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option><option>Grade 6</option></select></label><label for="parent-name">Parent or guardian name<input id="parent-name" name="parentName" type="text" autocomplete="name" required></label></div><div class="form-row"><label for="application-email">Email address<input id="application-email" name="email" type="email" autocomplete="email" required></label><label for="application-phone">Phone number<input id="application-phone" name="phone" type="tel" autocomplete="tel" required></label></div><label for="application-message">Anything we should know?<textarea id="application-message" name="message"></textarea></label><label class="consent"><input name="consent" type="checkbox" required> I agree that the school may use these details to respond to this application.</label><p class="form-status" aria-live="polite"></p><button class="button" type="submit">Submit application <span>→</span></button></form>
+            <form class="form-panel" id="enquiry-panel" data-form="enquiry" novalidate><div class="form-row"><label for="enquiry-name">Your name<input id="enquiry-name" name="name" type="text" autocomplete="name" required></label><label for="enquiry-email">Email address<input id="enquiry-email" name="email" type="email" autocomplete="email" required></label></div><label for="enquiry-topic">What is your enquiry about?<select id="enquiry-topic" name="topic" required><option value="">Choose a topic</option><option>Admissions</option><option>Classes and fees</option><option>School visit</option><option>Transport</option><option>Other</option></select></label><label for="enquiry-message">Your question<textarea id="enquiry-message" name="message" required></textarea></label><p class="form-status" aria-live="polite"></p><button class="button" type="submit">Send enquiry <span>→</span></button></form>
+            <form class="form-panel" id="contact-panel" data-form="contact" novalidate><div class="form-row"><label for="contact-name">Parent or guardian name<input id="contact-name" name="name" type="text" autocomplete="name" required></label><label for="contact-email">Email address<input id="contact-email" name="email" type="email" autocomplete="email" required></label></div><label for="contact-phone">Phone number<input id="contact-phone" name="phone" type="tel" autocomplete="tel"></label><label for="contact-message">How can we help?<textarea id="contact-message" name="message" required></textarea></label><p class="form-status" aria-live="polite"></p><button class="button" type="submit">Send message <span>→</span></button></form></div></section>
+        <section class="contact" id="contact"><div class="container contact-grid"><div><span class="eyebrow">Get in touch</span><h2>We would love to hear from you.</h2><div class="contact-details"><div><span>📍</span><span><strong>Visit us</strong>Blantyre Fargo, next to Infuse Guest House<br>Blantyre, Malawi</span></div><div><span>☎</span><span><strong>Call the office</strong>+265 000 000 000</span></div><div><span>✉</span><span><strong>Email us</strong>hello@graciouspvtschool.com</span></div></div></div><p>Use the contact office form above and the school team will reply using the details you provide.</p></div></section>
+        <section class="newsletter"><div class="container"><div><span class="eyebrow">Stay connected</span><h2>School news, when it matters.</h2></div><form class="newsletter-form" data-form="newsletter" novalidate><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" name="email" type="email" placeholder="Your email address" autocomplete="email" required><button class="button" type="submit">Subscribe</button><p class="form-status" aria-live="polite"></p></form></div></section>
+    </main>
+    <footer><div class="container"><span>© 2026 Gracious PVT School. Nursery &amp; Primary.</span><span>Blantyre Fargo · Malawi</span></div></footer>
+    <script>
+        let slideshowIntervals = {};
+
+        function currentSlide(index, slideshowId) {
+            showSlide(index, slideshowId);
+            resetSlideshow(slideshowId);
+        }
+
+        function showSlide(index, slideshowId) {
+            const slideshow = document.getElementById(slideshowId);
+            const slides = slideshow.querySelectorAll('.slide');
+            const dots = slideshow.querySelectorAll('.slide-dot');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide(slideshowId) {
+            const slideshow = document.getElementById(slideshowId);
+            const slides = slideshow.querySelectorAll('.slide');
+            let currentIndex = 0;
+            
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('active')) {
+                    currentIndex = index;
+                }
+            });
+            
+            const nextIndex = (currentIndex + 1) % slides.length;
+            showSlide(nextIndex, slideshowId);
+        }
+
+        function resetSlideshow(slideshowId) {
+            if (slideshowIntervals[slideshowId]) {
+                clearInterval(slideshowIntervals[slideshowId]);
+            }
+            slideshowIntervals[slideshowId] = setInterval(() => {
+                nextSlide(slideshowId);
+            }, 3000);
+        }
+
+        // Initialize all slideshows
+        document.addEventListener('DOMContentLoaded', () => {
+            const slideshows = ['nursery-slideshow', 'culture-slideshow', 'museum-slideshow', 'graduation-slideshow'];
+            slideshows.forEach(slideshowId => {
+                resetSlideshow(slideshowId);
+            });
+        });
+
+        const API_BASE_URL = "http://localhost:3000/api";
+        const tabs = document.querySelectorAll(".form-tab");
+        tabs.forEach((tab) => tab.addEventListener("click", () => {
+            tabs.forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
+            document.querySelectorAll(".form-panel").forEach((panel) => panel.classList.toggle("active", panel.id === tab.dataset.panel));
+        }));
+        document.querySelectorAll("[data-form]").forEach((form) => form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const status = form.querySelector(".form-status");
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            status.className = "form-status";
+            status.textContent = "Sending...";
+            try {
+                const response = await fetch(`${API_BASE_URL}/forms/${form.dataset.form}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) });
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.message || "Unable to send your form.");
+                form.reset();
+                status.textContent = result.message;
+            } catch (error) {
+                status.className = "form-status error";
+                status.textContent = error.message || "Unable to send your form. Please call the school office.";
+            }
+        }));
+    </script>
+</body>
+</html>
