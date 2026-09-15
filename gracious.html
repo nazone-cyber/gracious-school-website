@@ -23,11 +23,13 @@
         }
 
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; color: var(--ink); background: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
         a { color: inherit; text-decoration: none; }
         img { display: block; max-width: 100%; }
+        input, select, textarea, button { max-width: 100%; }
         .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+        .hero-copy, .hero-art, .about-grid > *, .contact-grid > *, .section-head > * { min-width: 0; overflow-wrap: anywhere; }
         .eyebrow { color: var(--sky-dark); font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
         h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; }
         h1, h2 { font-family: Fraunces, serif; }
@@ -156,6 +158,7 @@
         @media (max-width: 480px) {
             .container { width: min(100% - 28px, 1120px); }
             .topbar .container, footer .container { flex-direction: column; gap: 3px; }
+            .topbar { font-size: .75rem; }
             section { padding: 70px 0; }
             .program-grid, .check-list, .form-row { grid-template-columns: 1fr; }
             .newsletter-form { flex-direction: column; }
@@ -276,28 +279,48 @@
             });
         });
 
-        const API_BASE_URL = "https://gracious-school-backend.onrender.com/api";
+        const WHATSAPP_NUMBER = "265889447944";
+        const formTitles = {
+            application: "Student application",
+            enquiry: "General enquiry",
+            contact: "Contact message",
+            newsletter: "Newsletter subscription"
+        };
+        const fieldLabels = {
+            studentName: "Student name",
+            dateOfBirth: "Date of birth",
+            classChoice: "Class applying for",
+            parentName: "Parent or guardian",
+            name: "Name",
+            email: "Email",
+            phone: "Phone number",
+            topic: "Enquiry topic",
+            message: "Message"
+        };
         const tabs = document.querySelectorAll(".form-tab");
         tabs.forEach((tab) => tab.addEventListener("click", () => {
             tabs.forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
             document.querySelectorAll(".form-panel").forEach((panel) => panel.classList.toggle("active", panel.id === tab.dataset.panel));
         }));
-        document.querySelectorAll("[data-form]").forEach((form) => form.addEventListener("submit", async (event) => {
+        document.querySelectorAll("[data-form]").forEach((form) => form.addEventListener("submit", (event) => {
             event.preventDefault();
             const status = form.querySelector(".form-status");
             if (!form.checkValidity()) { form.reportValidity(); return; }
             status.className = "form-status";
-            status.textContent = "Sending...";
-            try {
-                const response = await fetch(`${API_BASE_URL}/forms/${form.dataset.form}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) });
-                const result = await response.json();
-                if (!response.ok) throw new Error(result.message || "Unable to send your form.");
-                form.reset();
-                status.textContent = result.message;
-            } catch (error) {
-                status.className = "form-status error";
-                status.textContent = error.message || "Unable to send your form. Please call the school office.";
-            }
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const answers = Object.entries(formData)
+                .filter(([key, value]) => key !== "consent" && value)
+                .map(([key, value]) => `${fieldLabels[key] || key}: ${value}`);
+            const message = [
+                `New ${formTitles[form.dataset.form] || "website form"}`,
+                "",
+                ...answers,
+                "",
+                "Sent from the Gracious PVT School website."
+            ].join("\n");
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+            form.reset();
+            status.textContent = "WhatsApp has opened with your answers. Tap Send to deliver them to the school.";
         }));
     </script>
 </body>
